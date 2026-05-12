@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>IMF V3</title>
+  <meta name="description" content="IMF V3 — return to mainnet." />
+  <meta name="theme-color" content="#171217" />
+  <meta property="og:title" content="IMF V3 — Return to Mainnet" />
+  <meta property="og:description" content="Bank the unbankable. A launch venue where every token earns its liquidity." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?display=swap&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400" rel="stylesheet" />
+  <style>
+    :root{
+      /* imf.bz body bg */
+      --bg:#171217;
+      --panel:#1c171c;
+      --panel-2:#221c22;
+      --panel-3:#2a222a;
+      --border:#2a232a;
+      --border-2:#3a2f3a;
+      --text:#f5f5f5;
+      --text-dim:#9a8f9a;
+      --text-faint:#6a5f6a;
+      --red:#ff2a2a;
+      --red-2:#ff5151;
+      --red-soft:#ff8080;
+      --red-glow:rgba(255,42,42,.45);
+      --red-bg:rgba(255,42,42,.08);
+      --red-bg-2:rgba(255,42,42,.14);
+      --red-dim:#7f1d1d;
+      /* IMF fonts */
+      --mono:'JetBrains Mono','Lucida Console','Courier New',ui-monospace,SFMono-Regular,Menlo,monospace;
+      --terminal:'Lucida Console','Courier New','JetBrains Mono',ui-monospace,monospace;
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+    body{
+      font-family:var(--mono);
+      font-size:15px;
+      font-weight:400;
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      min-height:100vh;
+      background:var(--bg);
+    }
+    a{color:var(--red-2);text-decoration:none}
+    a:hover{color:var(--red-soft)}
+    ::selection{background:var(--red);color:#000}
+    img,svg{max-width:100%;display:block}
+
+    /* ==== PAGE FRAME ==== */
+    .wrap{max-width:1160px;margin:0 auto;padding:0 18px}
+    @media(min-width:720px){ .wrap{padding:0 32px} }
+    section{padding:48px 0}
+    @media(min-width:720px){ section{padding:72px 0} }
+
+    /* ==== TOP NAV ==== */
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:18px 0;border-bottom:1px solid var(--border);
+      gap:12px;
+    }
+    .brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:700;letter-spacing:.01em;font-size:14px;color:#fff;min-width:0}
+    .brand .logo{width:26px;height:26px;flex-shrink:0;color:#fff}
+    .brand .wm{font-weight:700;letter-spacing:.04em}
+    .brand .tag{color:var(--text-faint);font-size:10px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;white-space:nowrap}
+    @media(max-width:480px){ .brand .tag{display:none} }
+    .pulse{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-faint);flex-shrink:0}
+    .pulse .pd{width:6px;height:6px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red-glow);animation:p 1.6s ease-in-out infinite}
+    @keyframes p{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+
+    /* ==== HERO ==== */
+    .hero{padding-top:48px;padding-bottom:24px}
+    @media(min-width:720px){ .hero{padding-top:96px;padding-bottom:40px} }
+    .eyebrow{
+      font-family:var(--mono);font-size:11px;font-weight:500;
+      letter-spacing:.3em;text-transform:uppercase;color:var(--red);
+      margin-bottom:18px;display:flex;align-items:center;gap:10px;
+    }
+    .eyebrow::before{content:"";width:24px;height:1px;background:var(--red)}
+    h1.hero-title{
+      font-family:var(--mono);font-weight:700;
+      font-size:clamp(58px,14vw,168px);
+      line-height:.88;letter-spacing:-.04em;
+      margin:0 0 20px;
+    }
+    h1.hero-title .v{color:var(--red)}
+    .hero-lede{
+      font-family:var(--mono);font-weight:500;
+      font-size:clamp(17px,2.6vw,22px);line-height:1.4;
+      color:var(--text);max-width:28ch;margin:0 0 20px;
+    }
+    .hero-lede b{color:var(--red);font-weight:700}
+    .hero-sub{font-family:var(--mono);font-size:12.5px;color:var(--text-dim);max-width:54ch;line-height:1.65;margin:0 0 6px}
+    .hero-motto{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--text-faint);margin-top:22px}
+    .hero-motto .r{color:var(--red)}
+
+    /* ==== STAT STRIP ==== */
+    .strip{
+      margin-top:40px;
+      display:grid;grid-template-columns:repeat(2,1fr);gap:0;
+      border:1px solid var(--border);background:var(--panel);
+    }
+    @media(min-width:720px){ .strip{grid-template-columns:repeat(4,1fr)} }
+    .cell{padding:20px 18px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);min-width:0}
+    .cell:nth-child(2n){border-right:0}
+    .cell:nth-last-child(-n+2){border-bottom:0}
+    @media(min-width:720px){
+      .cell{border-bottom:0;padding:22px 22px}
+      .cell:nth-child(2n){border-right:1px solid var(--border)}
+      .cell:nth-child(4n){border-right:0}
+    }
+    .cell .k{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:10px;font-weight:500}
+    .cell .v{font-family:var(--mono);font-weight:700;font-size:clamp(22px,5vw,32px);line-height:1;letter-spacing:-.02em;color:#fff}
+    .cell .v .u{color:var(--red);font-size:.55em;margin-left:4px;font-weight:600}
+    .cell .s{font-family:var(--mono);font-size:10.5px;color:var(--text-faint);margin-top:8px;letter-spacing:.02em}
+
+    /* ==== SECTION HEAD ==== */
+    .sec-label{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:12px;font-weight:500}
+    h2{font-family:var(--mono);font-weight:700;font-size:clamp(26px,5.2vw,44px);letter-spacing:-.02em;line-height:1.05;margin:0 0 14px;color:#fff}
+    .sec-sub{font-family:var(--mono);font-size:14.5px;color:var(--text-dim);line-height:1.6;max-width:62ch;margin:0 0 28px}
+
+    /* ==== CHART CARDS ==== */
+    .chart-card{
+      background:var(--panel);border:1px solid var(--border);
+      padding:20px 14px 14px;position:relative;overflow:hidden;
+    }
+    @media(min-width:720px){ .chart-card{padding:28px 28px 22px} }
+    .chart-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+    .chart-head h3{font-family:var(--mono);font-weight:700;font-size:15px;margin:0;letter-spacing:-.005em;color:#fff}
+    .chart-head .meta{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-faint)}
+    .chart-svg-wrap{position:relative;width:100%;line-height:0}
+    .chart-svg-wrap svg{width:100%;height:auto;display:block;overflow:visible}
+    /* Keep charts at comfortable heights on narrow viewports */
+    @media(max-width:720px){
+      .chart-svg-wrap.tall svg{height:auto;min-height:220px}
+      .chart-svg-wrap.tier svg{height:180px;width:100%}
+    }
+    .chart-legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:14px;font-family:var(--mono);font-size:11px;color:var(--text-dim)}
+    .chart-legend .lg{display:flex;align-items:center;gap:8px}
+    .chart-legend .sw{width:16px;height:2px;background:var(--red);flex-shrink:0}
+    .chart-legend .sw.sw-dash{background:repeating-linear-gradient(90deg,var(--red),var(--red) 4px,transparent 4px,transparent 7px);height:2px}
+    .chart-legend .sw.sw-area{height:10px;background:linear-gradient(180deg,var(--red),rgba(255,42,42,.1));border:1px solid var(--red-dim)}
+
+    /* ==== FLOW GRID ==== */
+    .flow-grid{
+      display:grid;grid-template-columns:1fr;gap:12px;
+    }
+    @media(min-width:720px){ .flow-grid{grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border)} }
+    .step{
+      background:var(--panel);border:1px solid var(--border);padding:22px 20px;
+      position:relative;min-height:180px;
+    }
+    @media(min-width:720px){
+      .step{border:0;border-right:1px solid var(--border)}
+      .step:last-child{border-right:0}
+    }
+    .step .idx{
+      font-family:var(--mono);font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--red);
+      display:flex;align-items:center;gap:10px;margin-bottom:14px;font-weight:500;
+    }
+    .step .idx .num{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:22px;height:22px;border:1px solid var(--red);font-weight:700;font-size:10px;
+    }
+    .step h4{font-family:var(--mono);font-weight:700;font-size:17px;letter-spacing:-.01em;margin:0 0 10px;color:#fff}
+    .step p{font-family:var(--mono);font-size:13px;color:var(--text-dim);line-height:1.55;margin:0}
+    .step.terminal{background:linear-gradient(180deg,rgba(255,42,42,.07),var(--panel) 80%)}
+    .step.terminal h4{color:var(--red)}
+    .step.terminal::after{
+      content:"";position:absolute;inset:0;pointer-events:none;
+      box-shadow:inset 0 0 0 1px var(--red);
+    }
+    @media(min-width:720px){ .step.terminal::after{inset:-1px} }
+
+    /* ==== FEE TABS ==== */
+    .tabs{
+      display:flex;gap:0;margin-bottom:0;
+      border:1px solid var(--border);border-bottom:0;
+      overflow-x:auto;scrollbar-width:none;background:var(--panel);
+    }
+    .tabs::-webkit-scrollbar{display:none}
+    .tab{
+      flex:1 0 auto;padding:15px 18px;background:transparent;color:var(--text-dim);
+      border:0;border-right:1px solid var(--border);cursor:pointer;
+      font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;
+      white-space:nowrap;text-align:left;
+    }
+    .tab:last-child{border-right:0}
+    .tab:hover{color:#fff}
+    .tab.active{background:var(--red);color:#000;font-weight:700}
+    .tab-body{border:1px solid var(--border);background:var(--panel);padding:24px 18px}
+    @media(min-width:720px){ .tab-body{padding:32px} }
+    .tab-panel{display:none}
+    .tab-panel.active{display:block}
+    .tab-panel h4{font-family:var(--mono);font-weight:700;font-size:19px;margin:0 0 6px;letter-spacing:-.01em;color:#fff}
+    .tab-panel .tp-sub{font-family:var(--mono);font-size:12.5px;color:var(--text-dim);margin:0 0 20px;line-height:1.55}
+
+    /* ==== FEE TABLE ==== */
+    .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -18px;padding:0 18px}
+    @media(min-width:720px){ .tbl-wrap{margin:0;padding:0} }
+    table.fees{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:11.5px;min-width:500px}
+    @media(min-width:720px){ table.fees{font-size:12.5px} }
+    table.fees th,table.fees td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+    @media(min-width:720px){ table.fees th,table.fees td{padding:11px 14px} }
+    table.fees th{
+      background:var(--panel-2);color:var(--text-dim);font-weight:500;
+      letter-spacing:.16em;text-transform:uppercase;font-size:10px;
+    }
+    table.fees td{color:var(--text)}
+    table.fees td.num{text-align:right;font-variant-numeric:tabular-nums}
+    table.fees td.mc{color:var(--red)}
+    table.fees tr:hover td{background:var(--panel-2)}
+    table.fees tr.totalrow td{border-top:1px solid var(--border-2);background:var(--panel-2);font-weight:700;color:#fff}
+
+    /* Fee hero cards */
+    .fee-hero{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+    @media(min-width:720px){ .fee-hero{grid-template-columns:repeat(4,1fr);gap:12px} }
+    .fee-hero .fh{
+      background:var(--bg);border:1px solid var(--border);padding:16px 14px;
+    }
+    .fee-hero .fh .fk{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px}
+    .fee-hero .fh .fv{font-family:var(--mono);font-weight:700;font-size:clamp(22px,5vw,28px);letter-spacing:-.02em;line-height:1;color:#fff}
+    .fee-hero .fh .fv .u{color:var(--red);font-size:.5em;margin-left:3px;font-weight:600}
+    .fee-hero .fh.total{background:var(--red-bg);border-color:var(--red)}
+    .fee-hero .fh.total .fv{color:var(--red)}
+
+    /* ==== PROTECTIONS ==== */
+    .prot{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--border)}
+    @media(min-width:560px){ .prot{grid-template-columns:1fr 1fr} }
+    @media(min-width:900px){ .prot{grid-template-columns:repeat(3,1fr)} }
+    .p{padding:22px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--panel)}
+    @media(min-width:560px){
+      .p:nth-child(2n){border-right:0}
+    }
+    @media(min-width:900px){
+      .p:nth-child(2n){border-right:1px solid var(--border)}
+      .p:nth-child(3n){border-right:0}
+      .p:nth-last-child(-n+3){border-bottom:0}
+    }
+    .p .tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:8px;font-weight:500}
+    .p .tag .mrk{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:18px;height:18px;background:var(--red-bg);border:1px solid var(--red);color:var(--red);font-weight:700;font-family:var(--mono);font-size:11px;
+    }
+    .p h4{font-family:var(--mono);font-weight:700;font-size:15.5px;margin:0 0 6px;letter-spacing:-.005em;color:#fff}
+    .p p{font-family:var(--mono);font-size:12.5px;color:var(--text-dim);line-height:1.55;margin:0}
+
+    /* ==== CLAMP CARD (terminal-font computer feel) ==== */
+    .clamp{
+      border:1px solid var(--red);background:linear-gradient(180deg,var(--red-bg),transparent 85%);
+      padding:24px 18px;
+    }
+    @media(min-width:720px){ .clamp{padding:32px} }
+    .clamp h3{font-family:var(--mono);font-weight:700;font-size:20px;margin:0 0 8px;color:var(--red);letter-spacing:-.01em}
+    .clamp p{font-family:var(--mono);font-size:13.5px;color:var(--text-dim);margin:0 0 18px;max-width:60ch;line-height:1.55}
+    .clamp .fwrap{border:1px dashed var(--red);background:var(--bg);overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .clamp .f{
+      font-family:var(--terminal);font-size:12.5px;line-height:1.75;
+      padding:16px 18px;color:var(--text);margin:0;white-space:pre;
+    }
+    @media(max-width:560px){ .clamp .f{font-size:11.5px;padding:14px 14px} }
+    .clamp .f b{color:var(--red);font-weight:500}
+    .clamp .cmt{color:var(--text-faint)}
+
+    /* ==== CALLOUT BAR ==== */
+    .callout{
+      margin-top:40px;padding:14px 18px;background:var(--bg);
+      border-top:1px solid var(--red);border-bottom:1px solid var(--red);
+      font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);
+      display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    }
+
+    /* ==== FOOTER ==== */
+    footer{padding:36px 0 48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10.5px;color:var(--text-faint);letter-spacing:.18em;text-transform:uppercase;flex-wrap:wrap;gap:14px}
+    footer .brand-small{display:flex;align-items:center;gap:8px}
+    footer .brand-small .logo{width:20px;height:20px;color:var(--text-faint)}
+    footer .dot{color:var(--red)}
+    footer .motto{color:var(--text-faint)}
+    footer .motto .r{color:var(--red)}
+
+    /* ==== CREATOR WINDOW (anti-snipe, beyond pump.fun) ==== */
+    /* Window gate visual */
+    .window-card{
+      border:1px solid var(--border);background:var(--panel);
+      padding:24px 18px;
+    }
+    @media(min-width:720px){ .window-card{padding:32px} }
+    .window-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+    .window-tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);font-weight:500;display:flex;align-items:center;gap:8px}
+    .window-tag::before{content:"";width:18px;height:1px;background:var(--red)}
+    .window-meta{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-faint)}
+    .window-card h3{font-family:var(--mono);font-weight:700;font-size:19px;margin:0 0 8px;letter-spacing:-.01em;color:#fff}
+    .window-card .lede{font-family:var(--mono);font-size:13.5px;color:var(--text-dim);margin:0 0 22px;line-height:1.55;max-width:60ch}
+    .window-card .lede b{color:var(--red);font-weight:700}
+
+    .gates{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:22px}
+    @media(min-width:720px){ .gates{grid-template-columns:1fr 1fr;gap:18px} }
+    .gate{border:1px dashed var(--border-2);background:var(--bg);padding:18px 16px}
+    .gate .gk{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:14px;font-weight:500}
+    .gate .gk .gn{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border:1px solid var(--red);font-weight:700;font-size:10px;margin-right:8px;color:var(--red)}
+    .gate-line{position:relative;height:8px;margin:18px 8px 10px;background:var(--panel-2);border:1px solid var(--border)}
+    .gate-line .gfill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--red),var(--red-2));opacity:.85}
+    .gate-line .gdot{position:absolute;width:12px;height:12px;border-radius:50%;top:50%;transform:translate(-50%,-50%);background:var(--red);box-shadow:0 0 8px var(--red-glow)}
+    .gate-line .gdot.start{left:0;background:var(--text-faint);box-shadow:none}
+    .gate-line .gdot.end{right:0;left:auto;transform:translate(50%,-50%)}
+    .gate-line .gdot.fire{left:62%}
+    .gate-labels{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.08em;margin-top:8px}
+    .gate-labels .accent{color:var(--red);font-weight:700}
+    .gate p{font-family:var(--mono);font-size:11.5px;color:var(--text-dim);line-height:1.5;margin:6px 0 0}
+
+    .gate-summary{
+      font-family:var(--mono);font-size:12.5px;color:var(--text-dim);text-align:center;
+      padding:14px 14px;border-top:1px dashed var(--border-2);border-bottom:1px dashed var(--border-2);
+      letter-spacing:.05em;margin:22px 0 22px;
+    }
+    .gate-summary b{color:var(--red);font-weight:700}
+
+    .window-code{
+      font-family:var(--terminal);font-size:12.5px;line-height:1.7;
+      background:var(--bg);border:1px dashed var(--red);padding:16px 18px;
+      color:var(--text);margin:0 0 16px;white-space:pre;overflow-x:auto;
+    }
+    @media(max-width:560px){ .window-code{font-size:11.5px;padding:14px 14px} }
+    .window-code b{color:var(--red);font-weight:500}
+    .window-code .cmt{color:var(--text-faint)}
+    .window-card .footnote{font-family:var(--mono);font-size:11.5px;color:var(--text-faint);line-height:1.55;margin:0;max-width:64ch}
+    .window-card .footnote code{font-family:var(--mono);color:var(--red-2);font-size:.92em;background:var(--panel-2);padding:1px 5px;border:1px solid var(--border-2)}
+    .window-card .footnote em{color:var(--red);font-style:normal;font-weight:700}
+
+    /* ==== UTIL ==== */
+    .accent{color:var(--red)}
+    .muted{color:var(--text-dim)}
+  </style>
+</head>
+<body>
+
+  <!-- SHARED INLINE SVG SYMBOLS -->
+  <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
+    <defs>
+      <!-- IMF Globe logo — traced from imf.bz brand mark -->
+      <symbol id="imf-logo" viewBox="0 0 240 240">
+        <!-- outer circle -->
+        <circle cx="120" cy="120" r="108" fill="none" stroke="currentColor" stroke-width="16"/>
+        <!-- vertical meridian -->
+        <path d="M120,12 L120,228" stroke="currentColor" stroke-width="10" fill="none"/>
+        <!-- curved side meridians (ellipses) -->
+        <ellipse cx="120" cy="120" rx="44" ry="108" fill="none" stroke="currentColor" stroke-width="10"/>
+        <!-- equator -->
+        <line x1="12" y1="120" x2="228" y2="120" stroke="currentColor" stroke-width="10"/>
+        <!-- top / bottom latitude arcs -->
+        <path d="M35,64 Q120,44 205,64" stroke="currentColor" stroke-width="9" fill="none"/>
+        <path d="M35,176 Q120,196 205,176" stroke="currentColor" stroke-width="9" fill="none"/>
+        <!-- IMF letters band (white plate + bold letters) -->
+        <rect x="28" y="96" width="184" height="48" fill="currentColor"/>
+        <text x="120" y="134" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="44" fill="var(--bg, #171217)" letter-spacing="3">IMF</text>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="wrap">
+
+    <!-- NAV -->
+    <nav class="nav">
+      <div class="brand">
+        <svg class="logo" viewBox="0 0 240 240" aria-hidden="true"><use href="#imf-logo"/></svg>
+        <span class="wm">IMF</span>
+        <span class="tag">international meme fund</span>
+      </div>
+      <div class="pulse"><span class="pd"></span><span>mainnet</span></div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="eyebrow">V3 · Return to Mainnet</div>
+      <h1 class="hero-title">IMF<span class="v">V3</span></h1>
+      <p class="hero-lede">A launch venue where every token <b>earns its liquidity</b>. Fixed supply. Bonded market. Locked forever.</p>
+      <p class="hero-sub">Deploy a token. It trades on its own curve until enough is raised. The moment it does, liquidity migrates to a permanent pool — no admin, no delays, no rugs.</p>
+      <div class="hero-motto">Bank <span class="r">the unbankable</span></div>
+    </section>
+
+    <!-- STAT STRIP -->
+    <div class="strip">
+      <div class="cell">
+        <div class="k">Total supply</div>
+        <div class="v">1<span class="u">B</span></div>
+        <div class="s">fixed, minted at launch</div>
+      </div>
+      <div class="cell">
+        <div class="k">Graduation cap</div>
+        <div class="v">~$70<span class="u">K</span></div>
+        <div class="s">~20 ETH market cap</div>
+      </div>
+      <div class="cell">
+        <div class="k">Raised to graduate</div>
+        <div class="v">~4<span class="u">ETH</span></div>
+        <div class="s">≈ $14,000</div>
+      </div>
+      <div class="cell">
+        <div class="k">Pool at graduation</div>
+        <div class="v">100<span class="u">%</span></div>
+        <div class="s">liquidity locked forever</div>
+      </div>
+    </div>
+
+    <!-- THE CURVE -->
+    <section>
+      <div class="sec-label">§ 01 · The Curve</div>
+      <h2>Every token climbs the same hill.</h2>
+      <p class="sec-sub">Price follows a fixed math curve — buyers bid it up, sellers push it back down. No team allocations, no seed rounds, no presale. When enough ETH is raised, the curve closes and liquidity becomes a permanent pool.</p>
+
+      <div class="chart-card">
+        <div class="chart-head">
+          <h3>Market cap vs. tokens sold</h3>
+          <span class="meta">x · y = k · virtual reserves</span>
+        </div>
+        <div class="chart-svg-wrap tall">
+          <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Bonding curve chart">
+            <defs>
+              <linearGradient id="curveFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ff2a2a" stop-opacity="0.55"/>
+                <stop offset="60%" stop-color="#ff2a2a" stop-opacity="0.08"/>
+                <stop offset="100%" stop-color="#ff2a2a" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="curveLine" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#ff5151"/>
+                <stop offset="100%" stop-color="#ff2a2a"/>
+              </linearGradient>
+            </defs>
+            <!-- GRADUATION CALLOUT — anchored above plot area so it never clips -->
+            <g>
+              <rect x="520" y="10" width="200" height="42" fill="#171217" stroke="#ff2a2a" stroke-width="1.5"/>
+              <text x="620" y="29" fill="#ff2a2a" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="12" letter-spacing="2.5">GRADUATION</text>
+              <text x="620" y="45" fill="#fff" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="500" font-size="12.5">~20Ξ · ~$70K MC</text>
+              <!-- connector from callout to point -->
+              <line x1="620" y1="52" x2="620" y2="115" stroke="#ff2a2a" stroke-width="1" stroke-dasharray="2,3"/>
+            </g>
+            <!-- GRID + axis (plot area: x=70..770, y=78..336, y_max=24 ETH) -->
+            <g stroke="#2a232a" stroke-width="1">
+              <line x1="70" y1="336" x2="770" y2="336"/>
+              <line x1="70" y1="78" x2="70" y2="336"/>
+              <line x1="70" y1="282.25" x2="770" y2="282.25" stroke-dasharray="2,4"/>
+              <line x1="70" y1="228.50" x2="770" y2="228.50" stroke-dasharray="2,4"/>
+              <line x1="70" y1="174.75" x2="770" y2="174.75" stroke-dasharray="2,4"/>
+              <line x1="70" y1="121.00" x2="770" y2="121.00" stroke-dasharray="2,4"/>
+            </g>
+            <!-- y labels -->
+            <g font-family="'JetBrains Mono', monospace" font-size="13" fill="#6a5f6a" text-anchor="end">
+              <text x="62" y="286">5Ξ</text>
+              <text x="62" y="232">10Ξ</text>
+              <text x="62" y="178">15Ξ</text>
+              <text x="62" y="125">20Ξ</text>
+            </g>
+            <!-- x labels -->
+            <g font-family="'JetBrains Mono', monospace" font-size="13" fill="#6a5f6a" text-anchor="middle">
+              <text x="70" y="358">0</text>
+              <text x="210" y="358">200M</text>
+              <text x="350" y="358">400M</text>
+              <text x="490" y="358">600M</text>
+              <text x="630" y="358" fill="#ff2a2a" font-weight="700">800M</text>
+              <text x="770" y="358">1B</text>
+            </g>
+            <!-- AREA (0→800M) -->
+            <path fill="url(#curveFill)" d="M 70.00,336.00 L 70.00,321.97 L 105.00,320.57 L 140.00,318.94 L 175.00,317.04 L 210.00,314.81 L 245.00,312.16 L 280.00,308.97 L 315.00,305.11 L 350.00,300.35 L 385.00,294.39 L 420.00,286.82 L 455.00,276.96 L 490.00,263.82 L 525.00,245.75 L 560.00,219.93 L 580.00,198.74 L 600.00,171.17 L 615.00,147.89 L 625.00,127.05 L 630.00,119.32 L 630.00,336.00 Z"/>
+            <!-- LINE (0→800M) -->
+            <path fill="none" stroke="url(#curveLine)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                  d="M 70.00,321.97 L 105.00,320.57 L 140.00,318.94 L 175.00,317.04 L 210.00,314.81 L 245.00,312.16 L 280.00,308.97 L 315.00,305.11 L 350.00,300.35 L 385.00,294.39 L 420.00,286.82 L 455.00,276.96 L 476.00,269.56 L 490.00,263.82 L 504.00,257.31 L 518.00,249.87 L 532.00,241.32 L 546.00,231.44 L 560.00,219.93 L 574.00,206.41 L 588.00,190.37 L 602.00,171.17 L 612.50,154.15 L 619.50,141.31 L 625.00,127.05 L 630.00,119.32"/>
+            <!-- post-grad dashed continuation at graduation MC -->
+            <path fill="none" stroke="#ff2a2a" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.55"
+                  d="M 630.00,119.32 L 770.00,119.32"/>
+            <!-- graduation vertical marker -->
+            <line x1="630.00" y1="78" x2="630.00" y2="336" stroke="#ff2a2a" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+            <!-- graduation point -->
+            <circle cx="630.00" cy="119.32" r="6" fill="#ff2a2a"/>
+            <circle cx="630.00" cy="119.32" r="12" fill="none" stroke="#ff2a2a" stroke-width="1" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="chart-legend">
+          <div class="lg"><span class="sw"></span><span>live price · on curve</span></div>
+          <div class="lg"><span class="sw sw-area"></span><span>market cap area</span></div>
+          <div class="lg"><span class="sw sw-dash"></span><span>post-graduation · in pool</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="callout">
+      <span>&gt; session: v3 / mainnet</span>
+      <span>class: primary issuance</span>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <section>
+      <div class="sec-label">§ 02 · Lifecycle</div>
+      <h2>Launch. Bond. Graduate.</h2>
+      <p class="sec-sub">One path. No phases to skip, no queues to join. The token that hits the raise target in a given transaction is the token that gets its pool seeded in that same transaction.</p>
+
+      <div class="flow-grid">
+        <div class="step">
+          <div class="idx"><span class="num">01</span> Launch</div>
+          <h4>Deploy a token</h4>
+          <p>Pick a name, icon, and optionally arm a creator-only first-buy window. A fixed 1 B supply mints straight into the token's own market. No treasury, no team bag, no atomic shortcut — the creator can choose to land the first buy themselves, or let it open up.</p>
+        </div>
+        <div class="step">
+          <div class="idx"><span class="num">02</span> Bond</div>
+          <h4>Buyers climb the curve</h4>
+          <p>Every buy nudges price up, every sell nudges it down. Creator earns 0.30% on the volume. Supply can only move through the curve until graduation.</p>
+        </div>
+        <div class="step terminal">
+          <div class="idx"><span class="num">03</span> Graduate</div>
+          <h4>Last buyer flips the switch</h4>
+          <p>The trade that crosses the target does three things in one transaction: caps itself at the target, seeds the pool, burns the LP. No waiting room.</p>
+        </div>
+        <div class="step">
+          <div class="idx"><span class="num">04</span> Forever</div>
+          <h4>Permanent liquidity</h4>
+          <p>From here the token trades in a standard pool. The LP is burned at mint. Fees accrue into the burned position — depth only ever grows.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREATOR-ONLY FIRST-BUY WINDOW -->
+    <section>
+      <div class="sec-label">§ 03 · Anti-Snipe</div>
+      <h2>The creator gets first dibs — if they want them.</h2>
+      <p class="sec-sub">Optional, per-launch. When armed, only the creator can buy until they choose to or the timer runs out. No atomic deploy-and-buy shortcut, no factory-held funds — just a configurable head start that closes the moment it's used.</p>
+
+      <div class="window-card">
+        <div class="window-head">
+          <div class="window-tag">Optional · creatorFirstBuy = true</div>
+          <div class="window-meta">default 5 min · cap 1 hour</div>
+        </div>
+        <h3>The window closes on whichever comes first.</h3>
+        <p class="lede">When a launch opts in, the factory injects the configured duration into the curve. The gate stays closed until <b>either</b> the time deadline expires <b>or</b> the creator lands their first buy. While both are open, only the current creator may call <b>buy</b>; everyone else reverts.</p>
+
+        <div class="gates">
+          <div class="gate">
+            <div class="gk"><span class="gn">1</span> Time deadline</div>
+            <div class="gate-line">
+              <span class="gfill" style="width:100%"></span>
+              <span class="gdot start"></span>
+              <span class="gdot end"></span>
+            </div>
+            <div class="gate-labels">
+              <span>deploy</span>
+              <span class="accent">CREATOR_WINDOW_END</span>
+            </div>
+            <p>Hard ceiling. Owner-configurable per future launch, capped at one hour by <code>Factory.MAX_CREATOR_WINDOW</code>.</p>
+          </div>
+          <div class="gate">
+            <div class="gk"><span class="gn">2</span> First buy</div>
+            <div class="gate-line">
+              <span class="gfill" style="width:62%"></span>
+              <span class="gdot start"></span>
+              <span class="gdot fire"></span>
+            </div>
+            <div class="gate-labels">
+              <span>deploy</span>
+              <span class="accent">firstBuyDone (sticky)</span>
+            </div>
+            <p>The creator's first <b>buy</b> flips the flag. Sticky — a later <b>sell</b> back to zero supply does not re-arm the window.</p>
+          </div>
+        </div>
+
+        <div class="gate-summary">window <b>open</b> ⟶ only CREATOR can buy &nbsp;·&nbsp; window <b>closed</b> ⟶ anyone can buy</div>
+
+<pre class="window-code"><span class="cmt">// inside BondingCurve.buy:</span>
+uint64 windowEnd = CREATOR_WINDOW_END;
+if (windowEnd != 0 &amp;&amp; block.timestamp &lt; windowEnd &amp;&amp; !firstBuyDone) {
+    if (msg.sender != CREATOR) revert <b>CreatorWindowActive</b>(windowEnd);
+}
+<span class="cmt">// effects:</span>
+if (!firstBuyDone) firstBuyDone = true;</pre>
+
+        <p class="footnote">Opt out (<code>creatorFirstBuy = false</code>) and the factory injects <code>0</code> as the duration; the gate is dormant and anyone can buy from the first block. The creator's first buy, if any, is just a normal trade.</p>
+      </div>
+    </section>
+
+    <!-- NO OVERSHOOT -->
+    <section>
+      <div class="sec-label">§ 04 · Terminal Trade</div>
+      <h2>No overshoot. Ever.</h2>
+      <p class="sec-sub">A whale who sends 10 ETH into a curve that's one ETH from graduation does not inflate the pool. The trade is clamped to what's actually needed. The difference is refunded in the same transaction, before the token ships to them.</p>
+
+      <div class="clamp">
+        <h3>The clamp</h3>
+        <p>Every buy is capped by whichever budget binds first — tokens left on the curve, or ETH left to the graduation target.</p>
+        <div class="fwrap">
+<pre class="f"><span class="cmt">// 1. two caps on the trade</span>
+<b>cap</b> = min(
+  supplyLeft,  <span class="cmt">// ETH to drain tokens</span>
+  ethToTarget  <span class="cmt">// ETH left to graduate</span>
+)
+
+<span class="cmt">// 2. snap + refund</span>
+if (ethSent &gt; cap):
+  used   = cap
+  refund = ethSent − used
+  fee    = only on used
+
+<span class="cmt">// invariant</span>
+<b>raised ≤ target + 1 wei</b></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEES -->
+    <section>
+      <div class="sec-label">§ 05 · Fees</div>
+      <h2>Two pools. Three fee models.</h2>
+      <p class="sec-sub">Every venue on IMF V3 charges the same way: fees come out of the trader's input side, split between the creator, the protocol, and the pool's liquidity providers. What differs is the split.</p>
+
+      <div class="tabs" role="tablist">
+        <button class="tab active" role="tab" data-tab="t1">Launch market</button>
+        <button class="tab" role="tab" data-tab="t2">Graduated pool · dynamic</button>
+        <button class="tab" role="tab" data-tab="t3">Flat pool</button>
+      </div>
+
+      <div class="tab-body">
+
+        <!-- LAUNCH MARKET -->
+        <div class="tab-panel active" id="t1">
+          <h4>Launch market</h4>
+          <p class="tp-sub">Flat 1.25% on every trade while the token is still on the curve. No LP here — there is no pool yet.</p>
+          <div class="fee-hero">
+            <div class="fh"><div class="fk">Creator</div><div class="fv">0.30<span class="u">%</span></div></div>
+            <div class="fh"><div class="fk">Protocol</div><div class="fv">0.95<span class="u">%</span></div></div>
+            <div class="fh"><div class="fk">LP</div><div class="fv">0.00<span class="u">%</span></div></div>
+            <div class="fh total"><div class="fk">Total</div><div class="fv">1.25<span class="u">%</span></div></div>
+          </div>
+          <p class="tp-sub" style="margin:0">Creator fees accrue to a claimable balance on the token — pull any time. Compatible with single-recipient or up-to-10-wallet splits.</p>
+        </div>
+
+        <!-- GRADUATED POOL -->
+        <div class="tab-panel" id="t2">
+          <h4>Graduated pool · 25-tier dynamic schedule</h4>
+          <p class="tp-sub">After graduation, fees decay as market cap grows. Creators earn more on early growth; once the token is large, LPs capture most of the spread forever.</p>
+
+          <div class="chart-card" style="margin-bottom:20px">
+            <div class="chart-head">
+              <h3 style="font-size:13px">Total fee · by market-cap tier</h3>
+              <span class="meta">tier 0 → 24</span>
+            </div>
+            <div class="chart-svg-wrap tier">
+              <svg viewBox="0 0 800 240" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fee tier step chart">
+                <defs>
+                  <linearGradient id="tierFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#ff2a2a" stop-opacity="0.5"/>
+                    <stop offset="100%" stop-color="#ff2a2a" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <g stroke="#2a232a" stroke-width="1" vector-effect="non-scaling-stroke">
+                  <line x1="40" y1="208" x2="780" y2="208"/>
+                  <line x1="40" y1="14" x2="40" y2="208"/>
+                  <line x1="40" y1="69.43" x2="780" y2="69.43" stroke-dasharray="2,4"/>
+                  <line x1="40" y1="104.14" x2="780" y2="104.14" stroke-dasharray="2,4"/>
+                  <line x1="40" y1="138.86" x2="780" y2="138.86" stroke-dasharray="2,4"/>
+                  <line x1="40" y1="173.57" x2="780" y2="173.57" stroke-dasharray="2,4"/>
+                </g>
+                <path fill="url(#tierFill)" d="M 40.0,208.0 L 40.0,34.8 L 69.6,34.8 L 69.6,41.7 L 99.2,41.7 L 99.2,48.6 L 128.8,48.6 L 128.8,55.6 L 158.4,55.6 L 158.4,62.5 L 188.0,62.5 L 188.0,69.4 L 217.6,69.4 L 217.6,76.4 L 247.2,76.4 L 247.2,83.3 L 276.8,83.3 L 276.8,90.2 L 306.4,90.2 L 306.4,97.1 L 336.0,97.1 L 336.0,104.1 L 365.6,104.1 L 365.6,111.0 L 395.2,111.0 L 395.2,117.9 L 424.8,117.9 L 424.8,124.9 L 454.4,124.9 L 454.4,131.8 L 484.0,131.8 L 484.0,135.2 L 513.6,135.2 L 513.6,138.7 L 543.2,138.7 L 543.2,142.2 L 572.8,142.2 L 572.8,145.6 L 602.4,145.6 L 602.4,149.1 L 632.0,149.1 L 632.0,152.6 L 661.6,152.6 L 661.6,156.0 L 691.2,156.0 L 691.2,159.5 L 720.8,159.5 L 720.8,163.0 L 750.4,163.0 L 750.4,166.4 L 780.0,166.4 L 780.0,208.0 Z"/>
+                <path fill="none" stroke="#ff2a2a" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke"
+                      d="M 40.0,34.8 L 69.6,34.8 L 69.6,41.7 L 99.2,41.7 L 99.2,48.6 L 128.8,48.6 L 128.8,55.6 L 158.4,55.6 L 158.4,62.5 L 188.0,62.5 L 188.0,69.4 L 217.6,69.4 L 217.6,76.4 L 247.2,76.4 L 247.2,83.3 L 276.8,83.3 L 276.8,90.2 L 306.4,90.2 L 306.4,97.1 L 336.0,97.1 L 336.0,104.1 L 365.6,104.1 L 365.6,111.0 L 395.2,111.0 L 395.2,117.9 L 424.8,117.9 L 424.8,124.9 L 454.4,124.9 L 454.4,131.8 L 484.0,131.8 L 484.0,135.2 L 513.6,135.2 L 513.6,138.7 L 543.2,138.7 L 543.2,142.2 L 572.8,142.2 L 572.8,145.6 L 602.4,145.6 L 602.4,149.1 L 632.0,149.1 L 632.0,152.6 L 661.6,152.6 L 661.6,156.0 L 691.2,156.0 L 691.2,159.5 L 720.8,159.5 L 720.8,163.0 L 750.4,163.0 L 750.4,166.4 L 780.0,166.4"/>
+              </svg>
+            </div>
+            <!-- chart labels rendered in HTML (not SVG) so they don't distort under preserveAspectRatio=none -->
+            <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--text-faint);margin-top:4px;letter-spacing:.1em;padding:0 4px">
+              <span>0 · 1.25%</span>
+              <span>tier 6</span>
+              <span>tier 12</span>
+              <span>tier 18</span>
+              <span>24 · 0.30%</span>
+            </div>
+          </div>
+
+          <div class="tbl-wrap">
+            <table class="fees">
+              <thead>
+                <tr>
+                  <th>Tier</th>
+                  <th>MC (ETH)</th>
+                  <th class="num">Creator</th>
+                  <th class="num">Protocol</th>
+                  <th class="num">LP</th>
+                  <th class="num">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>00</td><td class="mc">0 – 21</td><td class="num">0.300%</td><td class="num">0.930%</td><td class="num">0.020%</td><td class="num">1.250%</td></tr>
+                <tr><td>01</td><td class="mc">21 – 70</td><td class="num">0.950%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">1.200%</td></tr>
+                <tr><td>02</td><td class="mc">70 – 117</td><td class="num">0.900%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">1.150%</td></tr>
+                <tr><td>03</td><td class="mc">117 – 163</td><td class="num">0.850%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">1.100%</td></tr>
+                <tr><td>04</td><td class="mc">163 – 209</td><td class="num">0.800%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">1.050%</td></tr>
+                <tr><td>05</td><td class="mc">209 – 464</td><td class="num">0.750%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">1.000%</td></tr>
+                <tr><td>06</td><td class="mc">464 – 696</td><td class="num">0.700%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.950%</td></tr>
+                <tr><td>07</td><td class="mc">696 – 927</td><td class="num">0.650%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.900%</td></tr>
+                <tr><td>08</td><td class="mc">927 – 1,159</td><td class="num">0.600%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.850%</td></tr>
+                <tr><td>09</td><td class="mc">1,159 – 1,390</td><td class="num">0.550%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.800%</td></tr>
+                <tr><td>10</td><td class="mc">1,390 – 1,622</td><td class="num">0.500%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.750%</td></tr>
+                <tr><td>11</td><td class="mc">1,622 – 1,854</td><td class="num">0.450%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.700%</td></tr>
+                <tr><td>12</td><td class="mc">1,854 – 2,085</td><td class="num">0.400%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.650%</td></tr>
+                <tr><td>13</td><td class="mc">2,085 – 2,317</td><td class="num">0.350%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.600%</td></tr>
+                <tr><td>14</td><td class="mc">2,317 – 2,548</td><td class="num">0.300%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.550%</td></tr>
+                <tr><td>15</td><td class="mc">2,548 – 2,779</td><td class="num">0.275%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.525%</td></tr>
+                <tr><td>16</td><td class="mc">2,779 – 3,011</td><td class="num">0.250%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.500%</td></tr>
+                <tr><td>17</td><td class="mc">3,011 – 3,243</td><td class="num">0.225%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.475%</td></tr>
+                <tr><td>18</td><td class="mc">3,243 – 3,475</td><td class="num">0.200%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.450%</td></tr>
+                <tr><td>19</td><td class="mc">3,475 – 3,706</td><td class="num">0.175%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.425%</td></tr>
+                <tr><td>20</td><td class="mc">3,706 – 3,937</td><td class="num">0.150%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.400%</td></tr>
+                <tr><td>21</td><td class="mc">3,937 – 4,168</td><td class="num">0.125%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.375%</td></tr>
+                <tr><td>22</td><td class="mc">4,168 – 4,400</td><td class="num">0.100%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.350%</td></tr>
+                <tr><td>23</td><td class="mc">4,400 – 4,631</td><td class="num">0.075%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.325%</td></tr>
+                <tr class="totalrow"><td>24</td><td class="mc">4,631+</td><td class="num">0.050%</td><td class="num">0.050%</td><td class="num">0.200%</td><td class="num">0.300%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- FLAT POOL -->
+        <div class="tab-panel" id="t3">
+          <h4>Flat pool</h4>
+          <p class="tp-sub">Permissionless pools that opt into a simpler, fixed 0.30% split. No creator economics, no market-cap tiering — the rate never moves.</p>
+          <div class="fee-hero">
+            <div class="fh"><div class="fk">Creator</div><div class="fv">0.00<span class="u">%</span></div></div>
+            <div class="fh"><div class="fk">Protocol</div><div class="fv">0.05<span class="u">%</span></div></div>
+            <div class="fh"><div class="fk">LP</div><div class="fv">0.25<span class="u">%</span></div></div>
+            <div class="fh total"><div class="fk">Total</div><div class="fv">0.30<span class="u">%</span></div></div>
+          </div>
+          <p class="tp-sub" style="margin:0">Use it for tokens that should behave like any other pair — same shape as the canonical flat-fee pools on major AMMs.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- IDENTITY -->
+    <section>
+      <div class="sec-label">§ 06 · Identity</div>
+      <h2>Every token gets a name. Both ways.</h2>
+      <p class="sec-sub">When a launch deploys, its ENS subdomain — <code>&lt;label&gt;.&lt;name&gt;.eth</code> — is registered <em>and</em> the token's reverse record is wired back to the subdomain, all in one atomic transaction. Wallets and explorers display the name from the moment the token exists. Either every step lands or none of them do — there is no in-between state to confuse anyone.</p>
+
+      <div class="window-card">
+        <div class="window-head">
+          <div class="window-tag">deployAndRegister · five operations · one tx</div>
+          <div class="window-meta">+170 k gas vs. plain createToken</div>
+        </div>
+        <h3>Five steps. One signature. All-or-nothing.</h3>
+        <p class="lede">The deployer proxy bundles the token deploy, the forward record, the resolver wiring, the ownership transfer, and the reverse record into a single transaction. If <b>any</b> step reverts, the whole thing rolls back — including the token contract itself.</p>
+
+        <div class="flow-grid" style="margin-top:18px">
+          <div class="step">
+            <div class="idx"><span class="num">01</span> Deploy</div>
+            <h4>Token + curve</h4>
+            <p>Factory creates the (Token, BondingCurve) pair at deterministic CREATE2 addresses. Mint hits the curve. Identical to a direct factory call.</p>
+          </div>
+          <div class="step">
+            <div class="idx"><span class="num">02</span> Forward</div>
+            <h4>Subdomain claim</h4>
+            <p>The proxy registers <code>&lt;label&gt;.&lt;name&gt;.eth</code> on the ENS Registry, sets the resolver to the canonical Public Resolver, and points the <code>addr</code> record at the new token.</p>
+          </div>
+          <div class="step">
+            <div class="idx"><span class="num">03</span> Lock</div>
+            <h4>Hand the subdomain to the token</h4>
+            <p>The proxy transfers subnode ownership to the token contract. Token has no ENS-call code path of its own — the forward record is now immutable from the operator side.</p>
+          </div>
+          <div class="step terminal">
+            <div class="idx"><span class="num">04</span> Reverse</div>
+            <h4>Reverse record, same tx</h4>
+            <p>Token calls the canonical ENS Reverse Registrar with <code>&lt;label&gt;.&lt;name&gt;.eth</code>. Single-shot, locked forever. Wallets that resolve the token's address now get the name back.</p>
+          </div>
+        </div>
+
+        <div class="gate-summary" style="margin-top:22px">forward <b>and</b> reverse, written in the same block, by the same operator signature</div>
+
+<pre class="window-code"><span class="cmt">// inside IMFDeployerProxy.deployAndRegister:</span>
+(token, curve) = FACTORY.createToken{ value: msg.value }(...);
+ENS_REGISTRY.setSubnodeRecord(PARENT_NODE, labelHash, address(this), resolver, 0);
+PUBLIC_RESOLVER.setAddr(subnode, token);
+ENS_REGISTRY.setOwner(subnode, token);
+IToken(token).<b>setEnsReverseName</b>(string.concat(ensLabel, ".", parentName));</pre>
+
+        <p class="footnote">Authorization is one-time per parent name: the parent-name owner grants the proxy <code>setApprovalForAll</code> on the ENS Registry, and the factory owner authorizes the proxy via <code>Factory.setDeployerProxy</code>. After that, the operator runs deploys indefinitely with a single signed transaction per launch.</p>
+      </div>
+    </section>
+
+    <!-- PROTECTIONS -->
+    <section>
+      <div class="sec-label">§ 07 · Guarantees</div>
+      <h2>What the system refuses to do.</h2>
+      <p class="sec-sub">Hard invariants baked into the code. Not policies, not promises — things the contracts <em>cannot</em> do, to anyone, ever.</p>
+
+      <div class="prot">
+        <div class="p">
+          <div class="tag"><span class="mrk">✕</span> No rugs</div>
+          <h4>Liquidity is burned</h4>
+          <p>At graduation the pool's liquidity tokens are sent straight to an incinerator address. There is no owner, no unlock schedule, no path that returns the pool to anyone.</p>
+        </div>
+        <div class="p">
+          <div class="tag"><span class="mrk">✕</span> No admin</div>
+          <h4>Every token is sealed</h4>
+          <p>Protocol admin can configure <i>future</i> launches, not live ones. After a token deploys, its parameters are frozen. Nothing can pause it, upgrade it, or touch its balances.</p>
+        </div>
+        <div class="p">
+          <div class="tag"><span class="mrk">✕</span> No shadow pools</div>
+          <h4>One market, until graduation</h4>
+          <p>The token's transfer lock prevents anyone from opening a rival pool before the canonical one exists. Your bag is safe from split-liquidity shenanigans in the bonding phase.</p>
+        </div>
+        <div class="p">
+          <div class="tag"><span class="mrk">✕</span> No overshoot</div>
+          <h4>Graduation price is predictable</h4>
+          <p>Whale buys get clamped. The final raised amount is within a rounding wei of the target — so the pool always seeds at the same price, regardless of who finishes the curve.</p>
+        </div>
+        <div class="p">
+          <div class="tag"><span class="mrk">✕</span> No dead window</div>
+          <h4>Atomic migration</h4>
+          <p>The buy that crosses the target is the same transaction that seeds the pool and burns the LP. There is no in-between state for sandwichers or snipers to camp on.</p>
+        </div>
+        <div class="p">
+          <div class="tag"><span class="mrk">✕</span> No grief</div>
+          <h4>Fees can never wedge trades</h4>
+          <p>Creator and protocol shares pool into claimable balances, paid out on pull. A malicious fee recipient cannot block anyone else's trades — or anyone else's claim.</p>
+        </div>
+        <div class="p">
+          <div class="tag"><span class="mrk">✓</span> Forever</div>
+          <h4>Creators keep royalties</h4>
+          <p>The creator share follows the trader's input on every trade before <i>and</i> after graduation. One-shot redirect to a different wallet is allowed — then locked, by design.</p>
+        </div>
+        <div class="p">
+          <div class="tag"><span class="mrk">✓</span> Forever</div>
+          <h4>Fees grow the pool</h4>
+          <p>The LP portion of every post-graduation trade lands in the burned liquidity position. Depth only ever goes up. Traders sandwich themselves into a price floor.</p>
+        </div>
+        <div class="p">
+          <div class="tag"><span class="mrk">✓</span> Forever</div>
+          <h4>Metadata is frozen</h4>
+          <p>Name, symbol, icon, description — stamped at launch and unchangeable. No one renames the token, no one swaps the image, no one points the URI at something new.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="brand-small">
+        <svg class="logo" viewBox="0 0 240 240" aria-hidden="true"><use href="#imf-logo"/></svg>
+        <span>IMF · v3 · mainnet</span>
+      </div>
+      <div>build · v3-mainnet-rc2</div>
+      <div class="motto">bank <span class="r">the unbankable</span></div>
+    </footer>
+
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.tab-panel');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
