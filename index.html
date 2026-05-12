@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>IMF V3</title>
-  <meta name="description" content="IMF V3 — return to mainnet." />
+  <title>IMF V4</title>
+  <meta name="description" content="IMF V4 — return to mainnet." />
   <meta name="theme-color" content="#171217" />
-  <meta property="og:title" content="IMF V3 — Return to Mainnet" />
+  <meta property="og:title" content="IMF V4 — Return to Mainnet" />
   <meta property="og:description" content="Bank the unbankable. A launch venue where every token earns its liquidity." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -376,8 +376,8 @@
 
     <!-- HERO -->
     <section class="hero">
-      <div class="eyebrow">V3 · Return to Mainnet</div>
-      <h1 class="hero-title">IMF<span class="v">V3</span></h1>
+      <div class="eyebrow">V4 · Return to Mainnet</div>
+      <h1 class="hero-title">IMF<span class="v">V4</span></h1>
       <p class="hero-lede">A launch venue where every token <b>earns its liquidity</b>. Fixed supply. Bonded market. Locked forever.</p>
       <p class="hero-sub">Deploy a token. It trades on its own curve until enough is raised. The moment it does, liquidity migrates to a permanent pool — no admin, no delays, no rugs.</p>
       <div class="hero-motto">Bank <span class="r">the unbankable</span></div>
@@ -392,8 +392,8 @@
       </div>
       <div class="cell">
         <div class="k">Graduation cap</div>
-        <div class="v">~$70<span class="u">K</span></div>
-        <div class="s">~20 ETH market cap</div>
+        <div class="v">~$68<span class="u">K</span></div>
+        <div class="s">~19.4 ETH market cap</div>
       </div>
       <div class="cell">
         <div class="k">Raised to graduate</div>
@@ -435,7 +435,7 @@
             <g>
               <rect x="520" y="10" width="200" height="42" fill="#171217" stroke="#ff2a2a" stroke-width="1.5"/>
               <text x="620" y="29" fill="#ff2a2a" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="12" letter-spacing="2.5">GRADUATION</text>
-              <text x="620" y="45" fill="#fff" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="500" font-size="12.5">~20Ξ · ~$70K MC</text>
+              <text x="620" y="45" fill="#fff" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="500" font-size="12.5">~19.4Ξ · ~$68K MC</text>
               <!-- connector from callout to point -->
               <line x1="620" y1="52" x2="620" y2="115" stroke="#ff2a2a" stroke-width="1" stroke-dasharray="2,3"/>
             </g>
@@ -461,7 +461,7 @@
               <text x="210" y="358">200M</text>
               <text x="350" y="358">400M</text>
               <text x="490" y="358">600M</text>
-              <text x="630" y="358" fill="#ff2a2a" font-weight="700">800M</text>
+              <text x="630" y="358" fill="#ff2a2a" font-weight="700">~794.81M</text>
               <text x="770" y="358">1B</text>
             </g>
             <!-- AREA (0→800M) -->
@@ -488,7 +488,7 @@
     </section>
 
     <div class="callout">
-      <span>&gt; session: v3 / mainnet</span>
+      <span>&gt; session: v4 / mainnet</span>
       <span>class: primary issuance</span>
     </div>
 
@@ -502,7 +502,7 @@
         <div class="step">
           <div class="idx"><span class="num">01</span> Launch</div>
           <h4>Deploy a token</h4>
-          <p>Pick a name, icon, and optionally arm a creator-only first-buy window. A fixed 1 B supply mints straight into the token's own market. No treasury, no team bag, no atomic shortcut — the creator can choose to land the first buy themselves, or let it open up.</p>
+          <p>Pick a name, icon, and optionally arm a creator-only first-buy window (≤ 1 h, sticky once they buy). A fixed 1 B supply mints straight into the token's own market — no treasury, no team bag, no admin reach. The window gives the creator anti-snipe priority without the gas-race surface of an atomic prebuy. Every trade goes through the public curve.</p>
         </div>
         <div class="step">
           <div class="idx"><span class="num">02</span> Bond</div>
@@ -611,7 +611,7 @@ if (ethSent &gt; cap):
     <section>
       <div class="sec-label">§ 05 · Fees</div>
       <h2>Two pools. Three fee models.</h2>
-      <p class="sec-sub">Every venue on IMF V3 charges the same way: fees come out of the trader's input side, split between the creator, the protocol, and the pool's liquidity providers. What differs is the split.</p>
+      <p class="sec-sub">Every venue on IMF V4 charges the same way: fees come out of the trader's input side, split between the creator, the protocol, and the pool's liquidity providers. What differs is the split.</p>
 
       <div class="tabs" role="tablist">
         <button class="tab active" role="tab" data-tab="t1">Launch market</button>
@@ -836,6 +836,21 @@ IToken(token).<b>setEnsReverseName</b>(string.concat(ensLabel, ".", parentName))
           <h4>Metadata is frozen</h4>
           <p>Name, symbol, icon, description — stamped at launch and unchangeable. No one renames the token, no one swaps the image, no one points the URI at something new.</p>
         </div>
+        <div class="p">
+          <div class="tag"><span class="mrk">✓</span> Parity</div>
+          <h4>Pump.fun economic parity</h4>
+          <p>Every economic dimension matches pump.fun's 2026 schedule: 1 B supply, 1.073 B / 1.4 ETH virtual reserves, 1.25 % pre-grad split (0.30 % creator + 0.95 % protocol), 25-tier post-grad fee table, atomic graduation, creator splits up to 10 wallets, cashback mode, single-use fee-redirect lock. Two pump features absent here are launch-flow ergonomics, not economic surfaces: the mobile referrer surcharge (no mobile client) and atomic deploy-and-buy (replaced by the creator-first-buy window).</p>
+        </div>
+        <div class="p">
+          <div class="tag"><span class="mrk">✓</span> Beyond</div>
+          <h4>Zero orphan dust at graduation</h4>
+          <p>The curve / migration supply split (≈ 794.81 M / 205.19 M, exact wei) is mathematically tuned so the supply cap and the ETH target bind at the same moment. Every successful graduation drains the curve to literally zero tokens. Pump's clean-rounded 793.1 M / 206.9 M split orphans ≈ 60 K tokens at the curve forever.</p>
+        </div>
+        <div class="p">
+          <div class="tag"><span class="mrk">✓</span> Beyond</div>
+          <h4>One-tx ENS forward + reverse</h4>
+          <p>Optional: launch a token and atomically register <code>&lt;label&gt;.&lt;parent&gt;.eth</code> + its reverse name in a single transaction. Wallets, explorers, and aggregators see the human-readable name from the moment the token exists.</p>
+        </div>
       </div>
     </section>
 
@@ -843,9 +858,9 @@ IToken(token).<b>setEnsReverseName</b>(string.concat(ensLabel, ".", parentName))
     <footer>
       <div class="brand-small">
         <svg class="logo" viewBox="0 0 240 240" aria-hidden="true"><use href="#imf-logo"/></svg>
-        <span>IMF · v3 · mainnet</span>
+        <span>IMF · v4 · mainnet</span>
       </div>
-      <div>build · v3-mainnet-rc2</div>
+      <div>build · v4-mainnet</div>
       <div class="motto">bank <span class="r">the unbankable</span></div>
     </footer>
 
