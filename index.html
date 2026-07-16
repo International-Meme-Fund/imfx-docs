@@ -1,13 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>IMF V4</title>
-  <meta name="description" content="IMF V4 — return to mainnet." />
-  <meta name="theme-color" content="#171217" />
-  <meta property="og:title" content="IMF V4 — Return to Mainnet" />
-  <meta property="og:description" content="Bank the unbankable. A launch venue where every token earns its liquidity." />
+  <title>IMF Exchange</title>
+  <meta name="description" content="IMF Exchange — democratize finance." />
+  <meta name="theme-color" content="#171712" />
+  <meta property="og:title" content="IMF Exchange — Democratize Finance" />
+  <meta property="og:description" content="Democratize finance. A launch venue where every token earns its liquidity." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,22 +16,22 @@
   <style>
     :root{
       /* imf.bz body bg */
-      --bg:#171217;
-      --panel:#1c171c;
-      --panel-2:#221c22;
-      --panel-3:#2a222a;
-      --border:#2a232a;
-      --border-2:#3a2f3a;
+      --bg:#171712;
+      --panel:#1c1c17;
+      --panel-2:#22221c;
+      --panel-3:#2a2a22;
+      --border:#2a2a23;
+      --border-2:#3a3a2f;
       --text:#f5f5f5;
-      --text-dim:#9a8f9a;
-      --text-faint:#6a5f6a;
-      --red:#ff2a2a;
-      --red-2:#ff5151;
-      --red-soft:#ff8080;
-      --red-glow:rgba(255,42,42,.45);
-      --red-bg:rgba(255,42,42,.08);
-      --red-bg-2:rgba(255,42,42,.14);
-      --red-dim:#7f1d1d;
+      --text-dim:#9a9a8f;
+      --text-faint:#6a6a5f;
+      --accent:#CCFF00;
+      --accent-2:#daff4d;
+      --accent-soft:#eaffa3;
+      --accent-glow:rgba(204,255,0,.45);
+      --accent-bg:rgba(204,255,0,.08);
+      --accent-bg-2:rgba(204,255,0,.14);
+      --accent-dim:#4a5d00;
       /* IMF fonts */
       --mono:'JetBrains Mono','Lucida Console','Courier New',ui-monospace,SFMono-Regular,Menlo,monospace;
       --terminal:'Lucida Console','Courier New','JetBrains Mono',ui-monospace,monospace;
@@ -47,9 +48,9 @@
       min-height:100vh;
       background:var(--bg);
     }
-    a{color:var(--red-2);text-decoration:none}
-    a:hover{color:var(--red-soft)}
-    ::selection{background:var(--red);color:#000}
+    a{color:var(--accent-2);text-decoration:none}
+    a:hover{color:var(--accent-soft)}
+    ::selection{background:var(--accent);color:#000}
     img,svg{max-width:100%;display:block}
 
     /* ==== PAGE FRAME ==== */
@@ -70,7 +71,7 @@
     .brand .tag{color:var(--text-faint);font-size:10px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;white-space:nowrap}
     @media(max-width:480px){ .brand .tag{display:none} }
     .pulse{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-faint);flex-shrink:0}
-    .pulse .pd{width:6px;height:6px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red-glow);animation:p 1.6s ease-in-out infinite}
+    .pulse .pd{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent-glow);animation:p 1.6s ease-in-out infinite}
     @keyframes p{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
 
     /* ==== HERO ==== */
@@ -78,26 +79,26 @@
     @media(min-width:720px){ .hero{padding-top:96px;padding-bottom:40px} }
     .eyebrow{
       font-family:var(--mono);font-size:11px;font-weight:500;
-      letter-spacing:.3em;text-transform:uppercase;color:var(--red);
+      letter-spacing:.3em;text-transform:uppercase;color:var(--accent);
       margin-bottom:18px;display:flex;align-items:center;gap:10px;
     }
-    .eyebrow::before{content:"";width:24px;height:1px;background:var(--red)}
+    .eyebrow::before{content:"";width:24px;height:1px;background:var(--accent)}
     h1.hero-title{
       font-family:var(--mono);font-weight:700;
       font-size:clamp(58px,14vw,168px);
       line-height:.88;letter-spacing:-.04em;
       margin:0 0 20px;
     }
-    h1.hero-title .v{color:var(--red)}
+    h1.hero-title .v{color:var(--accent)}
     .hero-lede{
       font-family:var(--mono);font-weight:500;
       font-size:clamp(17px,2.6vw,22px);line-height:1.4;
       color:var(--text);max-width:28ch;margin:0 0 20px;
     }
-    .hero-lede b{color:var(--red);font-weight:700}
+    .hero-lede b{color:var(--accent);font-weight:700}
     .hero-sub{font-family:var(--mono);font-size:12.5px;color:var(--text-dim);max-width:54ch;line-height:1.65;margin:0 0 6px}
     .hero-motto{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--text-faint);margin-top:22px}
-    .hero-motto .r{color:var(--red)}
+    .hero-motto .r{color:var(--accent)}
 
     /* ==== STAT STRIP ==== */
     .strip{
@@ -116,11 +117,11 @@
     }
     .cell .k{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:10px;font-weight:500}
     .cell .v{font-family:var(--mono);font-weight:700;font-size:clamp(22px,5vw,32px);line-height:1;letter-spacing:-.02em;color:#fff}
-    .cell .v .u{color:var(--red);font-size:.55em;margin-left:4px;font-weight:600}
+    .cell .v .u{color:var(--accent);font-size:.55em;margin-left:4px;font-weight:600}
     .cell .s{font-family:var(--mono);font-size:10.5px;color:var(--text-faint);margin-top:8px;letter-spacing:.02em}
 
     /* ==== SECTION HEAD ==== */
-    .sec-label{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:12px;font-weight:500}
+    .sec-label{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;font-weight:500}
     h2{font-family:var(--mono);font-weight:700;font-size:clamp(26px,5.2vw,44px);letter-spacing:-.02em;line-height:1.05;margin:0 0 14px;color:#fff}
     .sec-sub{font-family:var(--mono);font-size:14.5px;color:var(--text-dim);line-height:1.6;max-width:62ch;margin:0 0 28px}
 
@@ -142,9 +143,9 @@
     }
     .chart-legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:14px;font-family:var(--mono);font-size:11px;color:var(--text-dim)}
     .chart-legend .lg{display:flex;align-items:center;gap:8px}
-    .chart-legend .sw{width:16px;height:2px;background:var(--red);flex-shrink:0}
-    .chart-legend .sw.sw-dash{background:repeating-linear-gradient(90deg,var(--red),var(--red) 4px,transparent 4px,transparent 7px);height:2px}
-    .chart-legend .sw.sw-area{height:10px;background:linear-gradient(180deg,var(--red),rgba(255,42,42,.1));border:1px solid var(--red-dim)}
+    .chart-legend .sw{width:16px;height:2px;background:var(--accent);flex-shrink:0}
+    .chart-legend .sw.sw-dash{background:repeating-linear-gradient(90deg,var(--accent),var(--accent) 4px,transparent 4px,transparent 7px);height:2px}
+    .chart-legend .sw.sw-area{height:10px;background:linear-gradient(180deg,var(--accent),rgba(204,255,0,.1));border:1px solid var(--accent-dim)}
 
     /* ==== FLOW GRID ==== */
     .flow-grid{
@@ -160,20 +161,20 @@
       .step:last-child{border-right:0}
     }
     .step .idx{
-      font-family:var(--mono);font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--red);
+      font-family:var(--mono);font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);
       display:flex;align-items:center;gap:10px;margin-bottom:14px;font-weight:500;
     }
     .step .idx .num{
       display:inline-flex;align-items:center;justify-content:center;
-      width:22px;height:22px;border:1px solid var(--red);font-weight:700;font-size:10px;
+      width:22px;height:22px;border:1px solid var(--accent);font-weight:700;font-size:10px;
     }
     .step h4{font-family:var(--mono);font-weight:700;font-size:17px;letter-spacing:-.01em;margin:0 0 10px;color:#fff}
     .step p{font-family:var(--mono);font-size:13px;color:var(--text-dim);line-height:1.55;margin:0}
-    .step.terminal{background:linear-gradient(180deg,rgba(255,42,42,.07),var(--panel) 80%)}
-    .step.terminal h4{color:var(--red)}
+    .step.terminal{background:linear-gradient(180deg,rgba(204,255,0,.07),var(--panel) 80%)}
+    .step.terminal h4{color:var(--accent)}
     .step.terminal::after{
       content:"";position:absolute;inset:0;pointer-events:none;
-      box-shadow:inset 0 0 0 1px var(--red);
+      box-shadow:inset 0 0 0 1px var(--accent);
     }
     @media(min-width:720px){ .step.terminal::after{inset:-1px} }
 
@@ -192,7 +193,7 @@
     }
     .tab:last-child{border-right:0}
     .tab:hover{color:#fff}
-    .tab.active{background:var(--red);color:#000;font-weight:700}
+    .tab.active{background:var(--accent);color:#000;font-weight:700}
     .tab-body{border:1px solid var(--border);background:var(--panel);padding:24px 18px}
     @media(min-width:720px){ .tab-body{padding:32px} }
     .tab-panel{display:none}
@@ -213,7 +214,7 @@
     }
     table.fees td{color:var(--text)}
     table.fees td.num{text-align:right;font-variant-numeric:tabular-nums}
-    table.fees td.mc{color:var(--red)}
+    table.fees td.mc{color:var(--accent)}
     table.fees tr:hover td{background:var(--panel-2)}
     table.fees tr.totalrow td{border-top:1px solid var(--border-2);background:var(--panel-2);font-weight:700;color:#fff}
 
@@ -225,9 +226,9 @@
     }
     .fee-hero .fh .fk{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px}
     .fee-hero .fh .fv{font-family:var(--mono);font-weight:700;font-size:clamp(22px,5vw,28px);letter-spacing:-.02em;line-height:1;color:#fff}
-    .fee-hero .fh .fv .u{color:var(--red);font-size:.5em;margin-left:3px;font-weight:600}
-    .fee-hero .fh.total{background:var(--red-bg);border-color:var(--red)}
-    .fee-hero .fh.total .fv{color:var(--red)}
+    .fee-hero .fh .fv .u{color:var(--accent);font-size:.5em;margin-left:3px;font-weight:600}
+    .fee-hero .fh.total{background:var(--accent-bg);border-color:var(--accent)}
+    .fee-hero .fh.total .fv{color:var(--accent)}
 
     /* ==== PROTECTIONS ==== */
     .prot{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--border)}
@@ -242,36 +243,36 @@
       .p:nth-child(3n){border-right:0}
       .p:nth-last-child(-n+3){border-bottom:0}
     }
-    .p .tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:8px;font-weight:500}
+    .p .tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:8px;font-weight:500}
     .p .tag .mrk{
       display:inline-flex;align-items:center;justify-content:center;
-      width:18px;height:18px;background:var(--red-bg);border:1px solid var(--red);color:var(--red);font-weight:700;font-family:var(--mono);font-size:11px;
+      width:18px;height:18px;background:var(--accent-bg);border:1px solid var(--accent);color:var(--accent);font-weight:700;font-family:var(--mono);font-size:11px;
     }
     .p h4{font-family:var(--mono);font-weight:700;font-size:15.5px;margin:0 0 6px;letter-spacing:-.005em;color:#fff}
     .p p{font-family:var(--mono);font-size:12.5px;color:var(--text-dim);line-height:1.55;margin:0}
 
     /* ==== CLAMP CARD (terminal-font computer feel) ==== */
     .clamp{
-      border:1px solid var(--red);background:linear-gradient(180deg,var(--red-bg),transparent 85%);
+      border:1px solid var(--accent);background:linear-gradient(180deg,var(--accent-bg),transparent 85%);
       padding:24px 18px;
     }
     @media(min-width:720px){ .clamp{padding:32px} }
-    .clamp h3{font-family:var(--mono);font-weight:700;font-size:20px;margin:0 0 8px;color:var(--red);letter-spacing:-.01em}
+    .clamp h3{font-family:var(--mono);font-weight:700;font-size:20px;margin:0 0 8px;color:var(--accent);letter-spacing:-.01em}
     .clamp p{font-family:var(--mono);font-size:13.5px;color:var(--text-dim);margin:0 0 18px;max-width:60ch;line-height:1.55}
-    .clamp .fwrap{border:1px dashed var(--red);background:var(--bg);overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .clamp .fwrap{border:1px dashed var(--accent);background:var(--bg);overflow-x:auto;-webkit-overflow-scrolling:touch}
     .clamp .f{
       font-family:var(--terminal);font-size:12.5px;line-height:1.75;
       padding:16px 18px;color:var(--text);margin:0;white-space:pre;
     }
     @media(max-width:560px){ .clamp .f{font-size:11.5px;padding:14px 14px} }
-    .clamp .f b{color:var(--red);font-weight:500}
+    .clamp .f b{color:var(--accent);font-weight:500}
     .clamp .cmt{color:var(--text-faint)}
 
     /* ==== CALLOUT BAR ==== */
     .callout{
       margin-top:40px;padding:14px 18px;background:var(--bg);
-      border-top:1px solid var(--red);border-bottom:1px solid var(--red);
-      font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);
+      border-top:1px solid var(--accent);border-bottom:1px solid var(--accent);
+      font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
       display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
     }
 
@@ -279,9 +280,9 @@
     footer{padding:36px 0 48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10.5px;color:var(--text-faint);letter-spacing:.18em;text-transform:uppercase;flex-wrap:wrap;gap:14px}
     footer .brand-small{display:flex;align-items:center;gap:8px}
     footer .brand-small .logo{width:20px;height:20px;color:var(--text-faint)}
-    footer .dot{color:var(--red)}
+    footer .dot{color:var(--accent)}
     footer .motto{color:var(--text-faint)}
-    footer .motto .r{color:var(--red)}
+    footer .motto .r{color:var(--accent)}
 
     /* ==== CREATOR WINDOW (anti-snipe, beyond pump.fun) ==== */
     /* Window gate visual */
@@ -291,26 +292,26 @@
     }
     @media(min-width:720px){ .window-card{padding:32px} }
     .window-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:14px}
-    .window-tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);font-weight:500;display:flex;align-items:center;gap:8px}
-    .window-tag::before{content:"";width:18px;height:1px;background:var(--red)}
+    .window-tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:500;display:flex;align-items:center;gap:8px}
+    .window-tag::before{content:"";width:18px;height:1px;background:var(--accent)}
     .window-meta{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-faint)}
     .window-card h3{font-family:var(--mono);font-weight:700;font-size:19px;margin:0 0 8px;letter-spacing:-.01em;color:#fff}
     .window-card .lede{font-family:var(--mono);font-size:13.5px;color:var(--text-dim);margin:0 0 22px;line-height:1.55;max-width:60ch}
-    .window-card .lede b{color:var(--red);font-weight:700}
+    .window-card .lede b{color:var(--accent);font-weight:700}
 
     .gates{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:22px}
     @media(min-width:720px){ .gates{grid-template-columns:1fr 1fr;gap:18px} }
     .gate{border:1px dashed var(--border-2);background:var(--bg);padding:18px 16px}
-    .gate .gk{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:14px;font-weight:500}
-    .gate .gk .gn{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border:1px solid var(--red);font-weight:700;font-size:10px;margin-right:8px;color:var(--red)}
+    .gate .gk{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:500}
+    .gate .gk .gn{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border:1px solid var(--accent);font-weight:700;font-size:10px;margin-right:8px;color:var(--accent)}
     .gate-line{position:relative;height:8px;margin:18px 8px 10px;background:var(--panel-2);border:1px solid var(--border)}
-    .gate-line .gfill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--red),var(--red-2));opacity:.85}
-    .gate-line .gdot{position:absolute;width:12px;height:12px;border-radius:50%;top:50%;transform:translate(-50%,-50%);background:var(--red);box-shadow:0 0 8px var(--red-glow)}
+    .gate-line .gfill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));opacity:.85}
+    .gate-line .gdot{position:absolute;width:12px;height:12px;border-radius:50%;top:50%;transform:translate(-50%,-50%);background:var(--accent);box-shadow:0 0 8px var(--accent-glow)}
     .gate-line .gdot.start{left:0;background:var(--text-faint);box-shadow:none}
     .gate-line .gdot.end{right:0;left:auto;transform:translate(50%,-50%)}
     .gate-line .gdot.fire{left:62%}
     .gate-labels{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.08em;margin-top:8px}
-    .gate-labels .accent{color:var(--red);font-weight:700}
+    .gate-labels .accent{color:var(--accent);font-weight:700}
     .gate p{font-family:var(--mono);font-size:11.5px;color:var(--text-dim);line-height:1.5;margin:6px 0 0}
 
     .gate-summary{
@@ -318,22 +319,22 @@
       padding:14px 14px;border-top:1px dashed var(--border-2);border-bottom:1px dashed var(--border-2);
       letter-spacing:.05em;margin:22px 0 22px;
     }
-    .gate-summary b{color:var(--red);font-weight:700}
+    .gate-summary b{color:var(--accent);font-weight:700}
 
     .window-code{
       font-family:var(--terminal);font-size:12.5px;line-height:1.7;
-      background:var(--bg);border:1px dashed var(--red);padding:16px 18px;
+      background:var(--bg);border:1px dashed var(--accent);padding:16px 18px;
       color:var(--text);margin:0 0 16px;white-space:pre;overflow-x:auto;
     }
     @media(max-width:560px){ .window-code{font-size:11.5px;padding:14px 14px} }
-    .window-code b{color:var(--red);font-weight:500}
+    .window-code b{color:var(--accent);font-weight:500}
     .window-code .cmt{color:var(--text-faint)}
     .window-card .footnote{font-family:var(--mono);font-size:11.5px;color:var(--text-faint);line-height:1.55;margin:0;max-width:64ch}
-    .window-card .footnote code{font-family:var(--mono);color:var(--red-2);font-size:.92em;background:var(--panel-2);padding:1px 5px;border:1px solid var(--border-2)}
-    .window-card .footnote em{color:var(--red);font-style:normal;font-weight:700}
+    .window-card .footnote code{font-family:var(--mono);color:var(--accent-2);font-size:.92em;background:var(--panel-2);padding:1px 5px;border:1px solid var(--border-2)}
+    .window-card .footnote em{color:var(--accent);font-style:normal;font-weight:700}
 
     /* ==== UTIL ==== */
-    .accent{color:var(--red)}
+    .accent{color:var(--accent)}
     .muted{color:var(--text-dim)}
   </style>
 </head>
@@ -342,22 +343,13 @@
   <!-- SHARED INLINE SVG SYMBOLS -->
   <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
     <defs>
-      <!-- IMF Globe logo — traced from imf.bz brand mark -->
-      <symbol id="imf-logo" viewBox="0 0 240 240">
-        <!-- outer circle -->
-        <circle cx="120" cy="120" r="108" fill="none" stroke="currentColor" stroke-width="16"/>
-        <!-- vertical meridian -->
-        <path d="M120,12 L120,228" stroke="currentColor" stroke-width="10" fill="none"/>
-        <!-- curved side meridians (ellipses) -->
-        <ellipse cx="120" cy="120" rx="44" ry="108" fill="none" stroke="currentColor" stroke-width="10"/>
-        <!-- equator -->
-        <line x1="12" y1="120" x2="228" y2="120" stroke="currentColor" stroke-width="10"/>
-        <!-- top / bottom latitude arcs -->
-        <path d="M35,64 Q120,44 205,64" stroke="currentColor" stroke-width="9" fill="none"/>
-        <path d="M35,176 Q120,196 205,176" stroke="currentColor" stroke-width="9" fill="none"/>
-        <!-- IMF letters band (white plate + bold letters) -->
-        <rect x="28" y="96" width="184" height="48" fill="currentColor"/>
-        <text x="120" y="134" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="44" fill="var(--bg, #171217)" letter-spacing="3">IMF</text>
+      <!-- IMF logo — sourced from app.imf.bz/logo.svg. Globe fills as currentColor,
+           IMF-letter cutouts use var(--bg) so they blend with the page background. -->
+      <symbol id="imf-logo" viewBox="0 0 920 920">
+        <path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" d="M460 860C476.852 860 493.461 858.958 509.766 856.934C653.761 839.065 774.019 744.662 828.566 615.698C845.773 575.015 856.441 530.894 859.253 484.651C859.749 476.497 860 468.278 860 460C860 452.233 859.779 444.519 859.342 436.862C857.337 401.713 850.794 367.779 840.29 335.637C793.076 191.171 665.835 82.9027 510.945 63.2137C494.262 61.0931 477.259 60 460 60C446.231 60 432.624 60.6957 419.213 62.054C271.249 77.0393 147.111 172.667 91.434 304.302C87.1052 314.536 83.1902 324.989 79.71 335.637C69.3564 367.318 62.8513 400.74 60.7472 435.349C60.2515 443.503 60 451.722 60 460C60 467.767 60.2213 475.481 60.6581 483.138C60.6868 483.643 60.7165 484.147 60.7472 484.651C62.8513 519.261 69.3563 552.682 79.71 584.363C127.941 731.941 259.684 841.745 419.102 857.935C432.549 859.3 446.193 860 460 860ZM492.5 119.939C494.316 121.072 496.138 122.263 497.963 123.513C520.318 138.83 542.707 162.776 562.703 195.851C572.854 212.641 582.111 231.334 590.264 251.668C558.921 247.389 526.206 244.615 492.5 243.524V119.939ZM492.5 800.061V676.476C526.206 675.385 558.921 672.611 590.264 668.332C582.111 688.666 572.854 707.359 562.703 724.149C542.707 757.224 520.318 781.17 497.963 796.487C496.138 797.737 494.316 798.928 492.5 800.061ZM434.5 676.678L434.5 800.061C432.684 798.928 430.862 797.737 429.037 796.487C406.682 781.17 384.293 757.224 364.297 724.149C354.309 707.629 345.186 689.266 337.13 669.31C368.392 673.315 400.973 675.829 434.5 676.678ZM314.663 754.156C297.502 725.772 282.949 693.483 271.422 658.329C231.227 649.958 194.047 638.992 160.854 625.887C198.162 693.021 257.412 746.281 328.916 775.978C324.004 769.021 319.249 761.743 314.663 754.156ZM434.5 243.322C400.973 244.171 368.392 246.685 337.13 250.69C345.186 230.734 354.309 212.371 364.297 195.851C384.293 162.776 406.682 138.83 429.037 123.513C430.862 122.263 432.684 121.072 434.5 119.939V243.322ZM314.663 165.844C319.249 158.257 324.004 150.979 328.916 144.022C257.412 173.719 198.162 226.979 160.854 294.113C194.047 281.008 231.227 270.042 271.422 261.671C282.949 226.517 297.502 194.228 314.663 165.844ZM601.109 148.376C604.954 154 608.699 159.825 612.337 165.844C629.759 194.66 644.493 227.499 656.101 263.276C693.419 271.426 728.034 281.83 759.146 294.113C723.596 230.143 668.122 178.769 601.109 148.376ZM601.109 771.624C604.954 766 608.699 760.175 612.337 754.156C629.759 725.34 644.493 692.501 656.101 656.724C693.419 648.574 728.034 638.17 759.146 625.887C723.596 689.857 668.122 741.231 601.109 771.624Z"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" fill="var(--bg)" d="M491.912 301.212C532.042 302.584 570.337 306.514 606.086 312.554C606.256 313.222 606.425 313.891 606.593 314.562C618.022 360.201 624 409.552 624 459.669C624 509.786 618.022 559.136 606.593 604.776C606.552 604.941 606.51 605.107 606.468 605.272L606.391 605.58C606.331 605.819 606.27 606.058 606.21 606.297C606.169 606.459 606.127 606.621 606.086 606.783C580.58 611.093 553.777 614.328 525.937 616.327L520 396.669L493.071 618.085C491.55 618.139 490.026 618.189 488.5 618.236C479.096 618.522 469.593 618.669 460 618.669C451.241 618.669 442.558 618.547 433.956 618.307L407 396.669L401.05 616.801C370.32 614.836 340.812 611.366 312.869 606.606C312.714 605.997 312.56 605.387 312.407 604.776C300.978 559.136 295 509.786 295 459.669C295 409.552 300.978 360.201 312.407 314.562C312.56 313.951 312.714 313.341 312.869 312.732C349.631 306.469 389.1 302.439 430.5 301.133C432.015 301.085 433.533 301.041 435.054 301L463.5 476.669L491.912 301.212Z"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" fill="var(--bg)" d="M801.1 434.66C799.61 414.029 796.289 393.905 791.3 374.451C782.334 369.18 772.356 363.911 761.275 358.694C734.483 346.083 703.463 335.005 669.07 326C677.857 368.922 682.358 413.991 682.358 459.431C682.358 504.991 677.833 550.178 669 593.202C688.877 588.012 707.631 582.13 725.096 575.66H725.354C727.696 574.788 730.016 573.906 732.311 573.014C734.496 560.374 736.317 547.575 737.768 534.66H793.751C797.389 518.4 799.869 501.703 801.1 484.66H741.509C741.836 476.015 742 467.344 742 458.66C742 450.645 741.86 442.642 741.581 434.66H801.1Z"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" fill="var(--bg)" d="M119 485C120.473 505.804 123.806 526.093 128.835 545.703C137.801 550.975 147.78 556.244 158.861 561.46C185.489 573.994 216.294 585.014 250.437 593.989C243.224 558.778 238.897 522.121 237.572 485H213.496C213.166 476.697 213 468.359 213 460C213 451.641 213.166 443.303 213.496 435H237.608C238.974 398.217 243.288 361.898 250.437 327C216.294 335.975 185.489 346.995 158.861 359.529C147.78 364.746 137.801 370.014 128.835 375.286C123.886 394.585 120.579 414.542 119.071 435H155.455C155.152 443.313 155 451.651 155 460C155 468.35 155.152 476.687 155.455 485H119Z"/>
       </symbol>
     </defs>
   </svg>
@@ -371,16 +363,15 @@
         <span class="wm">IMF</span>
         <span class="tag">international meme fund</span>
       </div>
-      <div class="pulse"><span class="pd"></span><span>mainnet</span></div>
+      <div class="pulse"><span class="pd"></span><span>robinhood</span></div>
     </nav>
 
     <!-- HERO -->
     <section class="hero">
-      <div class="eyebrow">V4 · Return to Mainnet</div>
-      <h1 class="hero-title">IMF<span class="v">V4</span></h1>
+      <div class="eyebrow">Democratize Finance</div>
+      <h1 class="hero-title">IMF <span class="v">Exchange</span></h1>
       <p class="hero-lede">A launch venue where every token <b>earns its liquidity</b>. Fixed supply. Bonded market. Locked forever.</p>
       <p class="hero-sub">Deploy a token. It trades on its own curve until enough is raised. The moment it does, liquidity migrates to a permanent pool — no admin, no delays, no rugs.</p>
-      <div class="hero-motto">Bank <span class="r">the unbankable</span></div>
     </section>
 
     <!-- STAT STRIP -->
@@ -392,13 +383,13 @@
       </div>
       <div class="cell">
         <div class="k">Graduation cap</div>
-        <div class="v">~$68<span class="u">K</span></div>
+        <div class="v">~$37<span class="u">K</span></div>
         <div class="s">~19.4 ETH market cap</div>
       </div>
       <div class="cell">
         <div class="k">Raised to graduate</div>
         <div class="v">~4<span class="u">ETH</span></div>
-        <div class="s">≈ $14,000</div>
+        <div class="s">≈ $7,700</div>
       </div>
       <div class="cell">
         <div class="k">Pool at graduation</div>
@@ -422,25 +413,25 @@
           <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Bonding curve chart">
             <defs>
               <linearGradient id="curveFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#ff2a2a" stop-opacity="0.55"/>
-                <stop offset="60%" stop-color="#ff2a2a" stop-opacity="0.08"/>
-                <stop offset="100%" stop-color="#ff2a2a" stop-opacity="0"/>
+                <stop offset="0%" stop-color="#CCFF00" stop-opacity="0.55"/>
+                <stop offset="60%" stop-color="#CCFF00" stop-opacity="0.08"/>
+                <stop offset="100%" stop-color="#CCFF00" stop-opacity="0"/>
               </linearGradient>
               <linearGradient id="curveLine" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#ff5151"/>
-                <stop offset="100%" stop-color="#ff2a2a"/>
+                <stop offset="0%" stop-color="#daff4d"/>
+                <stop offset="100%" stop-color="#CCFF00"/>
               </linearGradient>
             </defs>
             <!-- GRADUATION CALLOUT — anchored above plot area so it never clips -->
             <g>
-              <rect x="520" y="10" width="200" height="42" fill="#171217" stroke="#ff2a2a" stroke-width="1.5"/>
-              <text x="620" y="29" fill="#ff2a2a" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="12" letter-spacing="2.5">GRADUATION</text>
-              <text x="620" y="45" fill="#fff" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="500" font-size="12.5">~19.4Ξ · ~$68K MC</text>
+              <rect x="520" y="10" width="200" height="42" fill="#171712" stroke="#CCFF00" stroke-width="1.5"/>
+              <text x="620" y="29" fill="#CCFF00" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="12" letter-spacing="2.5">GRADUATION</text>
+              <text x="620" y="45" fill="#fff" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="500" font-size="12.5">~19.4Ξ · ~$37K MC</text>
               <!-- connector from callout to point -->
-              <line x1="620" y1="52" x2="620" y2="115" stroke="#ff2a2a" stroke-width="1" stroke-dasharray="2,3"/>
+              <line x1="620" y1="52" x2="620" y2="115" stroke="#CCFF00" stroke-width="1" stroke-dasharray="2,3"/>
             </g>
             <!-- GRID + axis (plot area: x=70..770, y=78..336, y_max=24 ETH) -->
-            <g stroke="#2a232a" stroke-width="1">
+            <g stroke="#2a2a23" stroke-width="1">
               <line x1="70" y1="336" x2="770" y2="336"/>
               <line x1="70" y1="78" x2="70" y2="336"/>
               <line x1="70" y1="282.25" x2="770" y2="282.25" stroke-dasharray="2,4"/>
@@ -449,19 +440,19 @@
               <line x1="70" y1="121.00" x2="770" y2="121.00" stroke-dasharray="2,4"/>
             </g>
             <!-- y labels -->
-            <g font-family="'JetBrains Mono', monospace" font-size="13" fill="#6a5f6a" text-anchor="end">
+            <g font-family="'JetBrains Mono', monospace" font-size="13" fill="#6a6a5f" text-anchor="end">
               <text x="62" y="286">5Ξ</text>
               <text x="62" y="232">10Ξ</text>
               <text x="62" y="178">15Ξ</text>
               <text x="62" y="125">20Ξ</text>
             </g>
             <!-- x labels -->
-            <g font-family="'JetBrains Mono', monospace" font-size="13" fill="#6a5f6a" text-anchor="middle">
+            <g font-family="'JetBrains Mono', monospace" font-size="13" fill="#6a6a5f" text-anchor="middle">
               <text x="70" y="358">0</text>
               <text x="210" y="358">200M</text>
               <text x="350" y="358">400M</text>
               <text x="490" y="358">600M</text>
-              <text x="630" y="358" fill="#ff2a2a" font-weight="700">~794.81M</text>
+              <text x="630" y="358" fill="#CCFF00" font-weight="700">~794.81M</text>
               <text x="770" y="358">1B</text>
             </g>
             <!-- AREA (0→800M) -->
@@ -470,13 +461,13 @@
             <path fill="none" stroke="url(#curveLine)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
                   d="M 70.00,321.97 L 105.00,320.57 L 140.00,318.94 L 175.00,317.04 L 210.00,314.81 L 245.00,312.16 L 280.00,308.97 L 315.00,305.11 L 350.00,300.35 L 385.00,294.39 L 420.00,286.82 L 455.00,276.96 L 476.00,269.56 L 490.00,263.82 L 504.00,257.31 L 518.00,249.87 L 532.00,241.32 L 546.00,231.44 L 560.00,219.93 L 574.00,206.41 L 588.00,190.37 L 602.00,171.17 L 612.50,154.15 L 619.50,141.31 L 625.00,127.05 L 630.00,119.32"/>
             <!-- post-grad dashed continuation at graduation MC -->
-            <path fill="none" stroke="#ff2a2a" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.55"
+            <path fill="none" stroke="#CCFF00" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.55"
                   d="M 630.00,119.32 L 770.00,119.32"/>
             <!-- graduation vertical marker -->
-            <line x1="630.00" y1="78" x2="630.00" y2="336" stroke="#ff2a2a" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+            <line x1="630.00" y1="78" x2="630.00" y2="336" stroke="#CCFF00" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
             <!-- graduation point -->
-            <circle cx="630.00" cy="119.32" r="6" fill="#ff2a2a"/>
-            <circle cx="630.00" cy="119.32" r="12" fill="none" stroke="#ff2a2a" stroke-width="1" opacity="0.4"/>
+            <circle cx="630.00" cy="119.32" r="6" fill="#CCFF00"/>
+            <circle cx="630.00" cy="119.32" r="12" fill="none" stroke="#CCFF00" stroke-width="1" opacity="0.4"/>
           </svg>
         </div>
         <div class="chart-legend">
@@ -488,7 +479,7 @@
     </section>
 
     <div class="callout">
-      <span>&gt; session: v4 / mainnet</span>
+      <span>&gt; session: exchange / robinhood</span>
       <span>class: primary issuance</span>
     </div>
 
@@ -611,7 +602,7 @@ if (ethSent &gt; cap):
     <section>
       <div class="sec-label">§ 05 · Fees</div>
       <h2>Two pools. Three fee models.</h2>
-      <p class="sec-sub">Every venue on IMF V4 charges the same way: fees come out of the trader's input side, split between the creator, the protocol, and the pool's liquidity providers. What differs is the split.</p>
+      <p class="sec-sub">Every venue on IMF Exchange charges the same way: fees come out of the trader's input side, split between the creator, the protocol, and the pool's liquidity providers. What differs is the split.</p>
 
       <div class="tabs" role="tablist">
         <button class="tab active" role="tab" data-tab="t1">Launch market</button>
@@ -648,11 +639,11 @@ if (ethSent &gt; cap):
               <svg viewBox="0 0 800 240" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fee tier step chart">
                 <defs>
                   <linearGradient id="tierFill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#ff2a2a" stop-opacity="0.5"/>
-                    <stop offset="100%" stop-color="#ff2a2a" stop-opacity="0"/>
+                    <stop offset="0%" stop-color="#CCFF00" stop-opacity="0.5"/>
+                    <stop offset="100%" stop-color="#CCFF00" stop-opacity="0"/>
                   </linearGradient>
                 </defs>
-                <g stroke="#2a232a" stroke-width="1" vector-effect="non-scaling-stroke">
+                <g stroke="#2a2a23" stroke-width="1" vector-effect="non-scaling-stroke">
                   <line x1="40" y1="208" x2="780" y2="208"/>
                   <line x1="40" y1="14" x2="40" y2="208"/>
                   <line x1="40" y1="69.43" x2="780" y2="69.43" stroke-dasharray="2,4"/>
@@ -661,7 +652,7 @@ if (ethSent &gt; cap):
                   <line x1="40" y1="173.57" x2="780" y2="173.57" stroke-dasharray="2,4"/>
                 </g>
                 <path fill="url(#tierFill)" d="M 40.0,208.0 L 40.0,34.8 L 69.6,34.8 L 69.6,41.7 L 99.2,41.7 L 99.2,48.6 L 128.8,48.6 L 128.8,55.6 L 158.4,55.6 L 158.4,62.5 L 188.0,62.5 L 188.0,69.4 L 217.6,69.4 L 217.6,76.4 L 247.2,76.4 L 247.2,83.3 L 276.8,83.3 L 276.8,90.2 L 306.4,90.2 L 306.4,97.1 L 336.0,97.1 L 336.0,104.1 L 365.6,104.1 L 365.6,111.0 L 395.2,111.0 L 395.2,117.9 L 424.8,117.9 L 424.8,124.9 L 454.4,124.9 L 454.4,131.8 L 484.0,131.8 L 484.0,135.2 L 513.6,135.2 L 513.6,138.7 L 543.2,138.7 L 543.2,142.2 L 572.8,142.2 L 572.8,145.6 L 602.4,145.6 L 602.4,149.1 L 632.0,149.1 L 632.0,152.6 L 661.6,152.6 L 661.6,156.0 L 691.2,156.0 L 691.2,159.5 L 720.8,159.5 L 720.8,163.0 L 750.4,163.0 L 750.4,166.4 L 780.0,166.4 L 780.0,208.0 Z"/>
-                <path fill="none" stroke="#ff2a2a" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke"
+                <path fill="none" stroke="#CCFF00" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke"
                       d="M 40.0,34.8 L 69.6,34.8 L 69.6,41.7 L 99.2,41.7 L 99.2,48.6 L 128.8,48.6 L 128.8,55.6 L 158.4,55.6 L 158.4,62.5 L 188.0,62.5 L 188.0,69.4 L 217.6,69.4 L 217.6,76.4 L 247.2,76.4 L 247.2,83.3 L 276.8,83.3 L 276.8,90.2 L 306.4,90.2 L 306.4,97.1 L 336.0,97.1 L 336.0,104.1 L 365.6,104.1 L 365.6,111.0 L 395.2,111.0 L 395.2,117.9 L 424.8,117.9 L 424.8,124.9 L 454.4,124.9 L 454.4,131.8 L 484.0,131.8 L 484.0,135.2 L 513.6,135.2 L 513.6,138.7 L 543.2,138.7 L 543.2,142.2 L 572.8,142.2 L 572.8,145.6 L 602.4,145.6 L 602.4,149.1 L 632.0,149.1 L 632.0,152.6 L 661.6,152.6 L 661.6,156.0 L 691.2,156.0 L 691.2,159.5 L 720.8,159.5 L 720.8,163.0 L 750.4,163.0 L 750.4,166.4 L 780.0,166.4"/>
               </svg>
             </div>
@@ -734,59 +725,9 @@ if (ethSent &gt; cap):
       </div>
     </section>
 
-    <!-- IDENTITY -->
-    <section>
-      <div class="sec-label">§ 06 · Identity</div>
-      <h2>Every token gets a name. Both ways.</h2>
-      <p class="sec-sub">When a launch deploys, its ENS subdomain — <code>&lt;label&gt;.&lt;name&gt;.eth</code> — is registered <em>and</em> the token's reverse record is wired back to the subdomain, all in one atomic transaction. Wallets and explorers display the name from the moment the token exists. Either every step lands or none of them do — there is no in-between state to confuse anyone.</p>
-
-      <div class="window-card">
-        <div class="window-head">
-          <div class="window-tag">deployAndRegister · five operations · one tx</div>
-          <div class="window-meta">+170 k gas vs. plain createToken</div>
-        </div>
-        <h3>Five steps. One signature. All-or-nothing.</h3>
-        <p class="lede">The deployer proxy bundles the token deploy, the forward record, the resolver wiring, the ownership transfer, and the reverse record into a single transaction. If <b>any</b> step reverts, the whole thing rolls back — including the token contract itself.</p>
-
-        <div class="flow-grid" style="margin-top:18px">
-          <div class="step">
-            <div class="idx"><span class="num">01</span> Deploy</div>
-            <h4>Token + curve</h4>
-            <p>Factory creates the (Token, BondingCurve) pair at deterministic CREATE2 addresses. Mint hits the curve. Identical to a direct factory call.</p>
-          </div>
-          <div class="step">
-            <div class="idx"><span class="num">02</span> Forward</div>
-            <h4>Subdomain claim</h4>
-            <p>The proxy registers <code>&lt;label&gt;.&lt;name&gt;.eth</code> on the ENS Registry, sets the resolver to the canonical Public Resolver, and points the <code>addr</code> record at the new token.</p>
-          </div>
-          <div class="step">
-            <div class="idx"><span class="num">03</span> Lock</div>
-            <h4>Hand the subdomain to the token</h4>
-            <p>The proxy transfers subnode ownership to the token contract. Token has no ENS-call code path of its own — the forward record is now immutable from the operator side.</p>
-          </div>
-          <div class="step terminal">
-            <div class="idx"><span class="num">04</span> Reverse</div>
-            <h4>Reverse record, same tx</h4>
-            <p>Token calls the canonical ENS Reverse Registrar with <code>&lt;label&gt;.&lt;name&gt;.eth</code>. Single-shot, locked forever. Wallets that resolve the token's address now get the name back.</p>
-          </div>
-        </div>
-
-        <div class="gate-summary" style="margin-top:22px">forward <b>and</b> reverse, written in the same block, by the same operator signature</div>
-
-<pre class="window-code"><span class="cmt">// inside IMFDeployerProxy.deployAndRegister:</span>
-(token, curve) = FACTORY.createToken{ value: msg.value }(...);
-ENS_REGISTRY.setSubnodeRecord(PARENT_NODE, labelHash, address(this), resolver, 0);
-PUBLIC_RESOLVER.setAddr(subnode, token);
-ENS_REGISTRY.setOwner(subnode, token);
-IToken(token).<b>setEnsReverseName</b>(string.concat(ensLabel, ".", parentName));</pre>
-
-        <p class="footnote">Authorization is one-time per parent name: the parent-name owner grants the proxy <code>setApprovalForAll</code> on the ENS Registry, and the factory owner authorizes the proxy via <code>Factory.setDeployerProxy</code>. After that, the operator runs deploys indefinitely with a single signed transaction per launch.</p>
-      </div>
-    </section>
-
     <!-- PROTECTIONS -->
     <section>
-      <div class="sec-label">§ 07 · Guarantees</div>
+      <div class="sec-label">§ 06 · Guarantees</div>
       <h2>What the system refuses to do.</h2>
       <p class="sec-sub">Hard invariants baked into the code. Not policies, not promises — things the contracts <em>cannot</em> do, to anyone, ever.</p>
 
@@ -846,11 +787,6 @@ IToken(token).<b>setEnsReverseName</b>(string.concat(ensLabel, ".", parentName))
           <h4>Zero orphan dust at graduation</h4>
           <p>The curve / migration supply split (≈ 794.81 M / 205.19 M, exact wei) is mathematically tuned so the supply cap and the ETH target bind at the same moment. Every successful graduation drains the curve to literally zero tokens. Pump's clean-rounded 793.1 M / 206.9 M split orphans ≈ 60 K tokens at the curve forever.</p>
         </div>
-        <div class="p">
-          <div class="tag"><span class="mrk">✓</span> Beyond</div>
-          <h4>One-tx ENS forward + reverse</h4>
-          <p>Optional: launch a token and atomically register <code>&lt;label&gt;.&lt;parent&gt;.eth</code> + its reverse name in a single transaction. Wallets, explorers, and aggregators see the human-readable name from the moment the token exists.</p>
-        </div>
       </div>
     </section>
 
@@ -858,10 +794,10 @@ IToken(token).<b>setEnsReverseName</b>(string.concat(ensLabel, ".", parentName))
     <footer>
       <div class="brand-small">
         <svg class="logo" viewBox="0 0 240 240" aria-hidden="true"><use href="#imf-logo"/></svg>
-        <span>IMF · v4 · mainnet</span>
+        <span>IMF · exchange · robinhood</span>
       </div>
-      <div>build · v4-mainnet</div>
-      <div class="motto">bank <span class="r">the unbankable</span></div>
+      <div>build · exchange-robinhood</div>
+      <div class="motto">democratize <span class="r">finance</span></div>
     </footer>
 
   </div>
